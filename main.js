@@ -1,3 +1,4 @@
+// Creation of 2 const objects used in counterReducer function
 const incrementAction = {
     type: 'INCREMENT'
 }
@@ -6,6 +7,7 @@ const decrementAction = {
     type: 'DECREMENT'
 }
 
+// Creation of a function used to increment or decrement the state
 const initialState = 0;
 const counterReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -18,12 +20,16 @@ const counterReducer = (state = initialState, action) => {
     }
 }
 
-// STORE
+
+// Creation of a store with Redux
 const { createStore } = Redux;
 const store = createStore(counterReducer);
 
+// Creation of a function used to display statement
+const render = () => {
+    return console.log(store.getState());
+}
 
-
-/* console.log(counterReducer(0, incrementAction));
-console.log(counterReducer(4, decrementAction));
-console.log(5); */
+store.subscribe(render);
+store.dispatch(incrementAction);
+store.dispatch(decrementAction);
